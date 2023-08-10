@@ -1,0 +1,38 @@
+api-marvel:
+  wrapper:
+    base: https://gateway.marvel.com
+    key-params:
+      apikey: b26d065806bab34ec0c88d7a16a8c059
+      hash: c0a50d731d1cc7746919565f2d969d1e
+      ts: 1
+    endpoints:
+      characters:
+        path: /v1/public/characters
+        query-params-key:
+          - name
+          - nameStartsWith
+          - modifiedSince
+          - comics
+          - series
+          - events
+          - stories
+          - orderBy
+          - limit
+          - offset
+      character:
+        path: /v1/public/characters/{idGrupo}
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: sa
+    data-source: classpath:schema.sql
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: none
+  h2:
+    console:
+      enabled: true
