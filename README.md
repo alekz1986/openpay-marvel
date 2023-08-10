@@ -97,11 +97,11 @@ curl --location 'http://localhost:8080/marvel/character/1009718' \
 El siguiente curl fallará por enviar queryparams desconocidos, y/o tiene valores nulos o vacios (para las key permitidas)
 
 
-## Endpoint adicional /audit
+## Endpoint adicional /marvel/audit
 A modo de visualizacion, se crea este endpoint para mostrar el listado de los eventos guardados en el H2 cada vez que se consultan los endpoints de marvel
 
 ```shell
-curl --location 'http://localhost:8080/audit' \
+curl --location 'http://localhost:8080/marvel/audit' \
 --header 'Authorization: Bearer <TOKEN_JWT>' \
 --header 'Cookie: Cookie_1=value' \
 --data ''
