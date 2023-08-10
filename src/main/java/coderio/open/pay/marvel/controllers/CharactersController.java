@@ -3,6 +3,7 @@ package coderio.open.pay.marvel.controllers;
 import coderio.open.pay.marvel.services.CharactersService;
 import coderio.open.pay.wrapper.api.marvel.client.characters.response.CharacterDataWrapper;
 import lombok.AllArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,8 +19,8 @@ public class CharactersController {
     private final CharactersService service;
 
     @GetMapping
-    public CharacterDataWrapper get(@RequestParam MultiValueMap<String, String> queryParams) {
-        return this.service.listCharacters(queryParams);
+    public ResponseEntity<CharacterDataWrapper> get(@RequestParam MultiValueMap<String, String> queryParams) {
+        return ResponseEntity.ok(this.service.listCharacters(queryParams));
     }
 
 

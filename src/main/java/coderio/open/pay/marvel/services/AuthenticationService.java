@@ -46,7 +46,6 @@ public class AuthenticationService {
                 .plusMinutes(30L);
 
         Claims claims = Jwts.claims();
-        claims.setSubject("usuario123");
         claims.put("user", userInfo.getId());
         claims.put("user_name", userInfo.getUserName());
 

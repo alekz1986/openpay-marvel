@@ -4,6 +4,7 @@ import coderio.open.pay.marvel.exception.TechnicalException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -15,9 +16,9 @@ import java.time.ZoneId;
 import java.util.Date;
 
 @Component
+@Slf4j
 public class JwtHelper {
 
-    private static final Logger logger = LoggerFactory.getLogger(JwtHelper.class);
 
     public String generateToken(Claims claims, LocalDateTime expiration,
             PrivateKey privateKey) throws TechnicalException {
@@ -47,7 +48,7 @@ public class JwtHelper {
                     .parseClaimsJws(token)
                     .getBody();
         } catch (Exception ex) {
-            logger.error("Error validando firma del jwt", ex);
+            log.error("Error validating jwt signature", ex);
             return null;
         }
     }

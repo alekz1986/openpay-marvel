@@ -1,6 +1,7 @@
 package coderio.open.pay.marvel.repository.entities;
 
 import coderio.open.pay.marvel.services.dto.AuditClientDto;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,6 +25,7 @@ public class AuditClient {
 
     private String client;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime hitTime;
 
     @PrePersist

@@ -21,7 +21,7 @@ public class CharactersService {
 
     public CharacterDataWrapper listCharacters(MultiValueMap<String, String> params) {
         Mono<CharacterDataWrapper> mono = this.client.characters(params)
-                .doOnTerminate(() -> auditService.saveHit(Constants.CHARACTERS_CLIENT));
+                .doOnSuccess(x -> auditService.saveHit(Constants.CHARACTERS_CLIENT));
 
         CharacterDataWrapper data = mono.block(Duration.ofSeconds(5));
 
