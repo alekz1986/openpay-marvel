@@ -1,26 +1,24 @@
 package coderio.open.pay.marvel.controllers;
 
-import coderio.open.pay.marvel.services.CharactersService;
+import coderio.open.pay.marvel.services.CharacterService;
 import coderio.open.pay.wrapper.api.marvel.client.characters.response.CharacterDataWrapper;
 import lombok.AllArgsConstructor;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("/marvel/characters")
+@RequestMapping("/marvel/character/{idCharacter}")
 @AllArgsConstructor
-public class CharactersController {
+public class CharacterController {
 
-    private final CharactersService service;
+    private final CharacterService service;
 
     @GetMapping
-    public CharacterDataWrapper get(@RequestParam MultiValueMap<String, String> queryParams) {
-        return this.service.listCharacters(queryParams);
+    public CharacterDataWrapper get(@PathVariable String idCharacter) {
+        return this.service.getCharacter(idCharacter);
     }
-
 
 }
